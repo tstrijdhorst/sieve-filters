@@ -1,0 +1,26 @@
+require ["include", "environment", "variables", "relational", "comparator-i;ascii-numeric", "spamtest", "fileinto"];
+
+# Generated: Do not run this script on spam messages
+if allof (environment :matches "vnd.proton.spam-threshold" "*",
+spamtest :value "ge" :comparator "i;ascii-numeric" "${1}")
+{
+    return;
+}
+
+if exists [
+      "Feedback-ID",
+      "List-Unsubscribe",
+      "X-Campaign",
+      "X-campaignid",
+      "X-Feedback-ID",
+      "X-mail_abuse_inquiries",
+      "X-maillist-guid",
+      "X-maillist-id",
+      "X-MC-User",
+      "X-Feedback-ID",
+      "X-rpcampaign",
+      "X-Unsubscribe-Web"
+    ]
+{
+  fileinto "<<FILL IN>>";
+}
