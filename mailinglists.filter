@@ -1,19 +1,20 @@
 require ["fileinto"];
 
-if exists [
-      "Feedback-ID",
-      "List-Unsubscribe",
-      "X-Campaign",
-      "X-campaignid",
-      "X-Feedback-ID",
-      "X-mail_abuse_inquiries",
-      "X-maillist-guid",
-      "X-maillist-id",
-      "X-MC-User",
-      "X-Feedback-ID",
-      "X-rpcampaign",
-      "X-Unsubscribe-Web"
-    ]
+if anyof(  
+     exists "Feedback-ID",
+     exists "List-Unsubscribe",
+     exists "X-Campaign",
+     exists "X-campaignid",
+     exists "X-Feedback-ID",
+     exists "X-mail_abuse_inquiries",
+     exists "X-maillist-guid",
+     exists "X-maillist-id",
+     exists "X-MC-User",
+     exists "X-Feedback-ID",
+     exists "X-rpcampaign",
+     exists "X-Unsubscribe-Web",          
+     exists "List-Id"
+    )
 {
   fileinto "<<FILL IN>>";
 }
